@@ -1,6 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -43,7 +44,19 @@ public class RegistrationPage {
 		
 		Assert.assertEquals(text, "Your Account Has Been Created!");
 		
-		
+		driver.findElement(By.id("input-payment-firstname")).sendKeys("gagan");
+		driver.findElement(By.id("input-payment-lastname")).sendKeys("Kahlon");
+		driver.findElement(By.id("input-payment-address-1")).sendKeys("Ottawa street");
+		driver.findElement(By.id("input-payment-city")).sendKeys("Kitchener");
+		driver.findElement(By.id("input-payment-postcode")).sendKeys("N2A 1R3");
+		Select sc = new Select(driver.findElement(By.id("input-payment-country")));
+		sc.selectByVisibleText("Canada");
+		Select sc1 = new Select(driver.findElement(By.id("input-payment-zone")));
+		sc1.selectByVisibleText("Ontario");
+		driver.findElement(By.id("button-payment-address")).click();
+		// driver.findElement(By.cssSelector("h4.panel-title a")).click();
+		Select sc2 = new Select(driver.findElement(By.id("address_id")));
+		sc2.selectByIndex(1);
 
 	}
 
